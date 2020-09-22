@@ -11,6 +11,7 @@ public class User {
 
 	int idu;
 	String nom,prenom;
+	
 	public int getIdu() {
 		return idu;
 	}
