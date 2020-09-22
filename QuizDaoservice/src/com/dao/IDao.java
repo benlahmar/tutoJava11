@@ -18,4 +18,6 @@ public interface IDao {
 	public Quiz findById(int id);
 	public List<Quiz> findAll();
 	public Quiz save(Quiz q);
+	
+	
 }
