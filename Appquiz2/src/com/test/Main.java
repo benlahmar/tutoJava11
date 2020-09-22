@@ -3,19 +3,28 @@
  */
 package com.test;
 
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Scanner;
 import java.util.ServiceLoader;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+
 
 import com.dao.IDao;
-import com.model.Question;
-import com.model.Quiz;
-import com.model.Response;
+import com.dao.IDao2;
+import com.model.User;
+import com.model.enrity.Question;
+import com.model.enrity.Quiz;
+import com.model.enrity.Response;
 
 /**
  * @author BEN LAHMAR EL HABIB
@@ -30,19 +39,32 @@ public class Main {
 
 		//Map<Integer, Quiz> qz=getdata();
 		
+		User u=new User(1, "moi", "moi");
+		
+		
+		
+		
+		
 		
 		
 		ServiceLoader<IDao> services=ServiceLoader.load(IDao.class);
 		
-	
+		List<Quiz> val=null;
 		Optional<IDao> ss = services.findFirst();
 		if(ss.isPresent())
 		{
 			System.out.println(ss.getClass().getName());
-			List<Quiz> val =ss.get().findAll();
+			 val =ss.get().findAll();
 			for (Quiz quiz : val) {
 				System.out.println( quiz.toString());
-				Set<Question> qq = quiz.getQuestions();
+				/* SortedSet<Question> qq = quiz.getQuestions();
+				 
+				System.out.println( "first........" +qq.first());
+				Question qt=new Question(2,"ggg",true);
+				
+				SortedSet<Question> sss = qq.headSet(qt); 
+				 System.out.println("-------"+sss.first());
+				 
 				Iterator<Question> tt = qq.iterator();
 				while(tt.hasNext())
 				{
@@ -53,17 +75,69 @@ public class Main {
 						System.out.println("-----------------"+r.toString());
 					}
 					
-				}
+				}*/
 			}
 		}
 		
 		
 		
-		System.out.println("gggg");
+		System.out.println("*************************");
 	
 		
 		
-
+		Scanner sc=new Scanner(System.in);
+		System.out.println("entrer le id de quiz");
+		int id=sc.nextInt();
+		
+		QuizUser qu=new QuizUser();
+		
+		//Map<Integer, List<Integer>> repuser=new HashMap<>();
+		
+		Quiz qz = val.get(id);
+		qu.setU(u);
+		qu.setQz(qz);
+		qu.setDate(Calendar.getInstance().getTime());
+		
+		Iterator<Question> tt = qz.getQuestions().iterator();
+		while(tt.hasNext())
+		{
+			Question q = tt.next();
+			System.out.println(q.getIdq()+"----------"+q.getQuestion());
+			List<Response> rs = q.getResponses();
+			for (Response r : rs) {
+				System.out.println(r.getIdr()+"-----------------"+r.getResponse());
+				
+			}
+			System.out.println("entrer votre reponse   ");
+			int res=sc.nextInt();
+			q.setIdru(res);
+			
+		//	repuser.put(q.getIdq(), res);
+			
+			System.out.println("la reponse est "+res);
+		}
+		
+		Iterator<Question> tt2 = qz.getQuestions().iterator();
+		while(tt2.hasNext())
+		{
+			Question qt = tt2.next();
+			System.out.println("les reponse a la question  :"+qt.getIdq()+"-----"+qt.getIdru());
+			
+		}
+		
+		
+	/*	
+		
+		System.out.println("-----is multiple--------");
+		Predicate<Question> ismultiple= q->q.isIsmult();
+		qz.getQuestions().stream().filter(ismultiple).forEach(System.out::println);
+		
+		List<Question> resultats = qz.getQuestions().stream().filter(ismultiple).collect(Collectors.toList());
+		
+		
+		qz.getQuestions().stream().map( x-> x.getIdq()).filter( v -> v<3).forEach(System.out::println);
+		
+*/
 	}
 	
 	public static  Map<Integer, Quiz> getdata()
