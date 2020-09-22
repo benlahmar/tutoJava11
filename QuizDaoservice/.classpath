@@ -11,20 +11,5 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/QuizDaoservice">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/QuizDaoProviders">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/Utilisateur">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
