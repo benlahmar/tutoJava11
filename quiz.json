@@ -1,0 +1,40 @@
+
+[
+{'Quiz' :{'idquiz':1,' title':title1, 'description':'description1',
+'Question':[{'idq':1, 'question':question1, 'ismult':false, 'idru':0,
+'Response ':[{'idr':1, 'response':'response1', 'istrue':false},
+{'idr':2, 'response':'response2', 'istrue':true},
+{'idr':3, 'response':'response2', 'istrue':false},
+{'idr':4, 'response':'response2', 'istrue':false}]},
+
+Question':[{'idq':1, 'question':question1, 'ismult':false, 'idru':0,
+'Response ':[{'idr':1, 'response':'response1', 'istrue':false},
+{'idr':2, 'response':'response2', 'istrue':true},
+{'idr':3, 'response':'response2', 'istrue':false},
+{'idr':4, 'response':'response2', 'istrue':false}]},
+Question':[{'idq':1, 'question':question1, 'ismult':false, 'idru':0,
+'Response ':[{'idr':1, 'response':'response1', 'istrue':false},
+{'idr':2, 'response':'response2', 'istrue':true},
+{'idr':3, 'response':'response2', 'istrue':false},
+{'idr':4, 'response':'response2', 'istrue':false}]}
+],
+
+{'Quiz' :{'idquiz':1,' title':title1, 'description':'description1',
+'Question':[{'idq':1, 'question':question1, 'ismult':false, 'idru':0,
+'Response ':[{'idr':1, 'response':'response1', 'istrue':false},
+{'idr':2, 'response':'response2', 'istrue':true},
+{'idr':3, 'response':'response2', 'istrue':false},
+{'idr':4, 'response':'response2', 'istrue':false}]},
+
+Question':[{'idq':1, 'question':question1, 'ismult':false, 'idru':0,
+'Response ':[{'idr':1, 'response':'response1', 'istrue':false},
+{'idr':2, 'response':'response2', 'istrue':true},
+{'idr':3, 'response':'response2', 'istrue':false},
+{'idr':4, 'response':'response2', 'istrue':false}]},
+Question':[{'idq':1, 'question':question1, 'ismult':false, 'idru':0,
+'Response ':[{'idr':1, 'response':'response1', 'istrue':false},
+{'idr':2, 'response':'response2', 'istrue':true},
+{'idr':3, 'response':'response2', 'istrue':false},
+{'idr':4, 'response':'response2', 'istrue':false}]}
+]
+]
