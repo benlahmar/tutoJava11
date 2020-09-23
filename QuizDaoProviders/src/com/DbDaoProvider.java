@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Map;
 
 import com.dao.IDao;
-import com.model.Question;
-import com.model.Quiz;
-import com.model.Response;
+import com.model.enrity.Question;
+import com.model.enrity.Quiz;
+import com.model.enrity.Response;
 
 /**
  * @author BEN LAHMAR EL HABIB
@@ -61,29 +61,29 @@ public class DbDaoProvider implements IDao {
 	
 	public static  Map<Integer, Quiz> getdata()
 	{
-			Map<Integer, Quiz> qz=new HashMap<Integer, Quiz>();
+		Map<Integer, Quiz> qz=new HashMap<Integer, Quiz>();
 		
-		for(int i=1;i<5;i++)
+	for(int i=1;i<5;i++)
+	{
+		Quiz q=new Quiz(i, "title"+i, "description"+i);
+		for(int j=1;j<6;j++)
 		{
-			Quiz q=new Quiz(i, "title"+i, "description"+i);
-			for(int j=1;j<6;j++)
+			Question qs=new Question(j, "question"+j, false);
+			for(int k=1;k<5;k++)
 			{
-				Question qs=new Question(j, "question"+j, i==2);
-				for(int k=1;k<5;k++)
-				{
-					Response r=new Response(k, "response"+k, true);
-					qs.getResponses().add(r);
-				}
-				q.getQuestions().add(qs);
-				
-				
+				Response r=new Response(k, "response"+k, k==2);
+				qs.getResponses().add(r);
 			}
-			qz.put(i, q);
-			
+			q.getQuestions().add(qs);
 			
 			
 		}
-		return qz;
+		qz.put(i, q);
+		
+		
+		
+	}
+	return qz;
 	}
 
 }

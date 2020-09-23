@@ -4,23 +4,19 @@
 package com;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
-import com.dao.IDao2;
+import com.dao.IQuizDao;
 import com.model.enrity.Quiz;
 
 /**
  * @author BEN LAHMAR EL HABIB
  *
  */
-public class CsvDapProvider implements IDao2<Quiz, Integer> {
+public class DbDaoProviderQuiz implements IQuizDao{
 
-
-	Map<Integer, Quiz> quizs=new HashMap<Integer, Quiz>();
-	
+	Map<Integer, Quiz> quizs;
 	@Override
 	public void save(Quiz t) {
 		quizs.put(t.getIdquiz(), t);
@@ -53,4 +49,6 @@ public class CsvDapProvider implements IDao2<Quiz, Integer> {
 		this.quizs = quizs;
 	}
 	
+	
+
 }
