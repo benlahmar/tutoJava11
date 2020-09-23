@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.model;
+package com.model.enrity;
 
 /**
  * @author BEN LAHMAR EL HABIB
@@ -12,6 +12,7 @@ public class Response {
 	int idr;
 	String response;
 	boolean istrue;
+	
 	
 	
 	

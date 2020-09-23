@@ -1,10 +1,12 @@
 /**
  * 
  */
-package com.model;
+package com.model.enrity;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 /**
  * @author BEN LAHMAR EL HABIB
@@ -17,7 +19,11 @@ public class Quiz {
 
 	String title,description;
 	
-	Set<Question> questions=new HashSet<Question>();
+	//Set<Question> questions=new HashSet<Question>();
+	
+	SortedSet<Question> questions=new TreeSet<>(new Comparaison1());
+	
+	
 	
 	QuizConfig conf;
 
@@ -55,11 +61,13 @@ public class Quiz {
 		this.description = description;
 	}
 
-	public Set<Question> getQuestions() {
+	
+
+	public SortedSet<Question> getQuestions() {
 		return questions;
 	}
 
-	public void setQuestions(Set<Question> questions) {
+	public void setQuestions(SortedSet<Question> questions) {
 		this.questions = questions;
 	}
 
@@ -77,6 +85,10 @@ public class Quiz {
 	@Override
 	public String toString() {
 		return "Quiz [idquiz=" + idquiz + ", title=" + title + ", description=" + description + "]";
+		
+		
 	}
+	
+	
 	
 }
