@@ -3,6 +3,7 @@
  */
 package com.test;
 
+import java.time.LocalDateTime;
 import java.util.AbstractMap;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Date;
@@ -32,7 +33,7 @@ public class QuizUser {
 
 	int id;
 	int score;
-	Date date;
+	LocalDateTime date;
 	
 	Quiz qz;
 	User u;
@@ -91,10 +92,10 @@ public class QuizUser {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	public Date getDate() {
+	public LocalDateTime getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
 	public Quiz getQz() {

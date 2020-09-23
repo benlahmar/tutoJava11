@@ -14,6 +14,8 @@ module quiz.app2 {
 	
 	requires quiz.entitymodule;
 	requires jdk.internal.le;
+	requires json.simple;
+	requires java.net.http;
 	uses IDao;
 	uses IDao2;
 	uses IQuizDao;

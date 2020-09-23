@@ -10,9 +10,15 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.OpenOption;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -22,8 +28,10 @@ import java.util.Scanner;
 import java.util.ServiceLoader;
 import java.util.Set;
 import java.util.SortedSet;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
 
 
 import com.dao.IDao;
@@ -41,14 +49,14 @@ public class Main {
 
 	/**
 	 * @param args
-	 * @throws FileNotFoundException 
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws IOException {
 
 		//Map<Integer, Quiz> qz=getdata();
 		
 		User u=new User(1, "moi", "moi");
-		
+		System.out.println(LocalDateTime.now());
 		
 		testnio2(); 
 		System.out.println("####################################");
@@ -112,12 +120,14 @@ public class Main {
 		Quiz qz = val.get(id);
 		qu.setU(u);
 		qu.setQz(qz);
-		qu.setDate(Calendar.getInstance().getTime());
+		qu.setDate(LocalDateTime.now());
 		
 		Iterator<Question> tt = qz.getQuestions().iterator();
+		String datarep = "";
 		while(tt.hasNext())
 		{
 			Question q = tt.next();
+			datarep+=q.getIdq()+"--rep: --";
 			System.out.println(q.getIdq()+"----------"+q.getQuestion());
 			List<Response> rs = q.getResponses();
 			for (Response r : rs) {
@@ -127,11 +137,17 @@ public class Main {
 			System.out.println("entrer votre reponse   ");
 			int res=sc.nextInt();
 			q.setIdru(res);
-			
+			datarep+=res+";";
 		//	repuser.put(q.getIdq(), res);
 			
 			System.out.println("la reponse est "+res);
+			
 		}
+		
+		
+		Path pw=Path.of("respo.txt");
+		Files.writeString(pw, qu.getU().getIdu() +"---"+qu.getDate()+"---"+qu.getQz().getIdquiz()+"---"+datarep+"\n",  StandardOpenOption.APPEND);
+		
 		
 		qu.getresponse4user().stream().forEach(System.out::println);
 		
@@ -141,8 +157,18 @@ public class Main {
 		System.out.println("*******score*********");
 		System.out.println("le resultat est     "+qu.scoreuser() +" sur "+qz.getQuestions().size());
 		
+		String dt = Files.readString(pw);
+		 List<LocalDateTime> dates = dt.lines().map(x -> LocalDateTime.parse((x.split("---")[1]) )).collect(Collectors.toList());
 		
-		
+		 
+		 System.out.println("&&&&&&&&&&&&&&&&&&&&&&");
+		 
+		 LocalDateTime date1= LocalDateTime.parse("2020-09-23T14:32:24.116413600");
+		    dt.lines().filter(x -> LocalDateTime.parse((x.split("---")[1])).isBefore(date1)).forEach(System.out::println);
+		   
+		  
+		 
+		   
 		/*
 		
 		System.out.println("resultat    "+qu.calcscor()+"   sur "+qu.getQz().getQuestions().size());
@@ -184,13 +210,29 @@ public class Main {
 	public static void  testnio2()
 	{
 		Path path=Path.of("quiz.txt");
-		
+		Map<Quiz, Map<Question, List<Response>>> gg;
 		
 		String data="";
 		 try {
 			data=Files.readString(path);
+			//construire un objet Quiz
+			List<String> qq = data.lines().filter(x->x.contains("Quiz")).collect(Collectors.toList());
 			
 			
+			List<String> qs = data.lines().filter(x-> x.contains("Question")).collect(Collectors.toList());
+			
+			Function<String,String> ff = s-> {if(s.contains("Quiz")) return s ; else return "";};
+			
+			
+			
+			Map<String, List<String>> resu = data.lines(). collect(Collectors.groupingBy(ff ,Collectors.toList()));
+			
+			//qq.forEach(System.out::println);
+			
+			//qs.forEach(System.out::println);
+			resu.keySet() .forEach(System.out::println);
+			System.out.println("**************");
+			resu.values().forEach(System.out::println );
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
