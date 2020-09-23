@@ -5,7 +5,7 @@ package com.dao;
 
 import java.util.List;
 
-import com.model.Quiz;
+import com.model.enrity.Quiz;
 
 /**
  * @author BEN LAHMAR EL HABIB

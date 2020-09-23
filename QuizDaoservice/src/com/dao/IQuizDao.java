@@ -3,7 +3,7 @@
  */
 package com.dao;
 
-import com.model.Quiz;
+import com.model.enrity.Quiz;
 
 /**
  * @author BEN LAHMAR EL HABIB
