@@ -1,3 +1,3 @@
 module quiz.entitymodule {
-	exports com.model;
+	exports com.model.enrity;
 }

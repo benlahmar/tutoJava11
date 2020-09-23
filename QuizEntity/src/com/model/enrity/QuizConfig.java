@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.model;
+package com.model.enrity;
 
 /**
  * @author BEN LAHMAR EL HABIB
