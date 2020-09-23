@@ -3,13 +3,12 @@
  */
 package com;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.dao.IDao2;
-import com.model.Question;
-import com.model.Quiz;
 
 /**
  * @author BEN LAHMAR EL HABIB
@@ -23,25 +22,28 @@ public class DbDaoProviderQuestion<T, K> implements IDao2<T, K>{
 
 	@Override
 	public void save(T t) {
-		// TODO Auto-generated method stub
 		
+		//m.put(t., t)
 	}
 
 	@Override
 	public T findById(K id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return m.get(id);
 	}
 
 	@Override
 	public List<T> findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<>(m.values());
 	}
 
 	@Override
 	public void delete(K id) {
-		// TODO Auto-generated method stub
+		m.remove(id);
+		
+		
+		
 		
 	}
 
