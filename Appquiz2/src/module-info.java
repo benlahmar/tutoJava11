@@ -13,6 +13,7 @@ module quiz.app2 {
 	requires usermodule;
 	
 	requires quiz.entitymodule;
+	requires jdk.internal.le;
 	uses IDao;
 	uses IDao2;
 	uses IQuizDao;
