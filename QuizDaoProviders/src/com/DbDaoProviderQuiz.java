@@ -3,11 +3,12 @@
  */
 package com;
 
+import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Map;
 
 import com.dao.IQuizDao;
-import com.model.Quiz;
+import com.model.enrity.Quiz;
 
 /**
  * @author BEN LAHMAR EL HABIB
@@ -15,28 +16,39 @@ import com.model.Quiz;
  */
 public class DbDaoProviderQuiz implements IQuizDao{
 
+	Map<Integer, Quiz> quizs;
 	@Override
 	public void save(Quiz t) {
-		// TODO Auto-generated method stub
+		quizs.put(t.getIdquiz(), t);
 		
 	}
 
 	@Override
 	public Quiz findById(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		return quizs.get(id);
 	}
 
 	@Override
 	public List<Quiz> findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<>(quizs.values());
 	}
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
+		quizs.remove(id);
 		
 	}
+
+	public Map<Integer, Quiz> getQuizs() {
+		return quizs;
+	}
+
+	public void setQuizs(Map<Integer, Quiz> quizs) {
+		this.quizs = quizs;
+	}
+	
+	
 
 }
