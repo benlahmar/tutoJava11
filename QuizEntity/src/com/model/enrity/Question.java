@@ -20,6 +20,9 @@ public class Question {
 	int idru;
 	
 
+	
+	
+	
 	@Override
 	public String toString() {
 		return "Question [idq=" + idq + ", question=" + question + ", ismult=" + ismult + ", idru=" + idru + "]";
